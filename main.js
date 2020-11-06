@@ -14,4 +14,3 @@ function show(data) {
         products.insertAdjacentHTML('beforeend', newCard)
     });
 }
-console.log('oui')
