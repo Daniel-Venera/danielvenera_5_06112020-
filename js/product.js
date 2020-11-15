@@ -9,26 +9,15 @@ fetch("http://localhost:3000/api/teddies/" + product)
   })
   .then(function(data) {
     show(data);
-    //  document.querySelector('.form-group').addEventListener('submit', function(e) {
-    //   e.preventDefault
-    //    log('oui')
-    //   if (localStorage.getItem(data.name)) {
-    //     localStorage.setItem(data.name, (parseInt(localStorage.getItem(data.name)) + 1).toString() );
-    //   } else {
-    //     localStorage.setItem(data.name, 1)
-    //   }
-    //   var val = localStorage.getItem(data.name);
-    //   log(val)
-    //  })
     document.querySelector(".cart").addEventListener("click", function(e) {
       e.preventDefault;
       // var new_key = 'oui'
-      if (localStorage.getItem(data.name)) {
-        localStorage.setItem(data.name, (parseInt(localStorage.getItem(data.name)) + parseInt(number.value)).toString());
+      if (localStorage.getItem(data._id)) {
+        localStorage.setItem(data._id, (parseInt(localStorage.getItem(data._id)) + parseInt(number.value)).toString());
       } else {
-        localStorage.setItem(data.name, number.value);
+        localStorage.setItem(data._id, number.value);
       }
-      var val = localStorage.getItem(data.name);
+      var val = localStorage.getItem(data._id);
       document.querySelector(".modal-body__sum").innerText = data.name + " x" + number.value;
       log(val);
     });
