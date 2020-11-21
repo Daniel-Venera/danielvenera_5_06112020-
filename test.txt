@@ -1,0 +1,103 @@
+PLAN DE TEST
+
+---
+
+PAGE MAIN
+
+function callApi
+fait une requête GET sur l'API pour récupérer tous les produits d'une url donnée
+l'url doit être valide
+si succès : on lance la function show
+si échec : on console.log l'erreur
+
+function show
+pour chaque produit, on l'affiche dans une card
+le paramètre doit être un array qui contient des objets avec chacun renseignés :
+- imageUrl
+- name
+- price
+- _id
+si succès : pour chaque produit, on l'affiche dans une card
+si échec : rien n'est affiché
+
+---
+
+PAGE PRODUCT 
+
+function callApi
+fait une requête GET sur l'API pour récupérer le produit correspondant à l'id qui se trouve dans les paramètres d'url
+l'url doit être valide : elle contient un paramètre 'id' avec un numéro d'id correspondant à un id qu'on retrouve dans l'array des produits
+si succès : 
+- on lance la function show 
+- l'utilisateur peut changer la couleur souhaitée, le nombre de produits
+- l'utilisateur ajouter à son panier (dans ce cas, une modale s'ouvre et ce produit est intégré au localstorage)
+si échec : on console.log l'erreur
+
+function show
+on affiche toutes les données du produit
+le paramètre rentré doit contenir :
+- name
+- imageUrl
+- description
+- price
+- colors
+si succès : on affiche toutes ces données
+si échec : on affiche la page comme une 404
+
+---
+
+PAGE CART
+
+function callApiGet
+fait une requête GET sur l'API pour récupérer tous les produits d'une url donnée
+l'url doit être valide
+si succès : on lance la function show
+si échec : on console.log l'erreur
+
+
+function show
+affiche les produits du cart
+paramètre : l'array des produits
+si succès :
+- affiche les produits qui sont dans le localstorage avec la photo + le nombre + le prix total
+- affiche le bouton de suppresscart
+- affiche le formulaire de commande
+
+function suppresscart
+au clic sur le bouton 'supprimer mon panier' permet de supprimer le localstorage (et donc d'enlever tout ce qui est affiché)
+
+function checkInput
+(lancée par la soumission du formulaire)
+permet de vérifier si les valeurs rentrées dans le formulaire sont corrects
+paramètre : le nom de l'input + la valeur de l'input + le type de l'input 
+si succès : on créé les paramètres d'options et on instancie l'url de l'Api pour la commande et on  lance la function callApiPost  (avec ces paramètres)
+si échec : on ne lance pas la méthode POST
+
+function callApiPost
+fait une requête POST vers l'api 
+paramètres : url et les options POST
+succès : 
+- on met l'orderID dans le localstorage 
+- on est redirigé vers la page confirmation.html
+echec:
+- console.log 
+
+--
+
+PAGE CONFIRMATION
+
+function callApi
+fait une requête GET sur l'API pour récupérer tous les produits d'une url donnée
+l'url doit être valide
+si succès : on lance la function show
+si échec : on console.log l'erreur
+
+function show 
+permet d'afficher :
+- le numéro de commande
+- les produits
+- le prix total
+paramètre : l'array récupéré du callApi
+si succès : on affiche toutes ces données et on supprime le cart ensuite
+si échec : notamment s'il n'y a plus de produits => page 404
+
