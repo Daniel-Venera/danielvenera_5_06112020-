@@ -15,7 +15,6 @@ function callApiGet(url) {
     })
     .catch(err => console.error(err));
 }
-
 //on affiche les produits qui sont dans le panier
 function show(data) {
   products = [];
@@ -42,7 +41,6 @@ function suppressCart() {
   container.innerHTML = "<p>Vous n'avez pas d'articles dans votre panier</p>";
   document.querySelector("#form").classList.add("d-none");
 }
-
 //requête POST pour récupérer le numéro de l'order
 function callApiPost(urlOrder, options) {
   fetch(urlOrder, options)
@@ -55,9 +53,7 @@ function callApiPost(urlOrder, options) {
     })
     .catch(err => console.error(err));
 }
-
 // a la soumission on s'assure que les champs sont valides
-
 var checkValid = true;
 document.querySelector("form").addEventListener("submit", function(e) {
   e.preventDefault();
@@ -92,7 +88,6 @@ document.querySelector("form").addEventListener("submit", function(e) {
     callApiPost(urlOrder, options);
   }
 });
-
 // vérifie les valeurs des inputs selon leur type
 function checkInput(field, value, type) {
   if (type == "text") {
@@ -112,5 +107,4 @@ function checkInput(field, value, type) {
     }
   }
 }
-
 callApiGet(url);

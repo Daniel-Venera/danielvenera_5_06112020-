@@ -26,7 +26,6 @@ function callApi(url, product) {
     })
     .catch(err => console.error(err));
 }
-
 function show(data) {
   //on s'assure de l'existence de ces éléments et on change le contenu de la page en conséquence
   if (data.name && data.imageUrl && data.description && data.price && data.colors) {
@@ -44,5 +43,4 @@ function show(data) {
     document.querySelector(".container").innerHTML = "<h1 class='text-center'>404</h1><div class='text-center'><a class='btn btn-success text-white' href='index.html'>Retour à l'accueil</a></div> ";
   }
 }
-
 callApi(url, product);
